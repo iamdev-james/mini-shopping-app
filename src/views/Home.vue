@@ -1,9 +1,11 @@
 <template>
+<div id ='header'>
  <Header id = 'header'/>
+</div>
     <div class="bg_normal" :class = 'currentClass' id="main">
     <section id="nav-bar">
       <div class="PD-10">
-        <i class="color_whitePD far fa-dot-circle fa-2x MT15"></i>
+        <i class="color_whitePD far fa-dot-circle MT15"></i>
       </div>
       <div class="icon_blue flex_column">
         <i class="fab fa-facebook M10"></i>

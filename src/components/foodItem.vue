@@ -1,16 +1,16 @@
 <template>
  <div id= 'foodItemBlock'>
   <h4 v-for= '(item, index) in foodItem' :key = "index" class= 'product'>
-  <div id = 'image_container'>
-  <img :src ='item.ImageUrl' height= '253' width= '228' id= 'product_image'/>
-  <button class= 'addToCart'>ADD TO CART</button>
+  <div id = 'image_container' @mouseover = 'showBtn = index' @mouseleave = 'showBtn = -1'>
+  <img :src ='item.ImageUrl' id= 'product_image'/>
+  <button  v-show = 'showBtn === index' class= 'addToCart'>ADD TO CART</button>
   </div>
 <div id= 'product_details'>
  <span class= 'product_name'>
   {{ item.Title }}
 </span>
 <span>
-  {{ item.OrgPrice }}
+  $: {{ item.OrgPrice }}
 </span>
 </div>
   </h4>
@@ -22,7 +22,8 @@ import foodItem from '@/data/foodItem'
 export default {
   data () {
     return {
-      foodItem: foodItem
+      foodItem: foodItem,
+      showBtn: ''
     }
   }
 }
@@ -49,13 +50,14 @@ export default {
 }
 #product_image {
   position: absolute;
+  height: 253px;
+  width: 228px;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
 .addToCart {
-  display: none;
   width: 12rem;
   position: absolute;
   bottom: 50px;
@@ -97,6 +99,9 @@ export default {
  #product_image {
   width: 98px;
   height: 80px;
+ }
+ #product_details {
+  flex-direction: column;
  }
 }
 </style>

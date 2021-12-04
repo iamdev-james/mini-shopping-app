@@ -17,8 +17,7 @@
   </h4>
 </div>
 <div v-if = 'showCart' id= 'cart_section'>
-   <p @click = 'closeCart ()'> close </p>
-   <i class= 'fas-fa-times'></i>
+   <p @click = 'closeCart ()'><i class="far fa-times-circle fa-2x MT-20"></i></p>
    <Cart :total= 'total' :cart = 'cart' @removeItem = 'removeProduct($event)'/>
 </div>
 <div id= 'foodItemHeader'>
@@ -181,6 +180,9 @@ export default {
   padding: 40px 110px;
   text-align: left;
 }
+.MT-20 {
+  margin-top: 20px;
+}
 @media screen and (max-width: 700px) {
  #productBlock {
   grid-template-columns: repeat(2, 150px);
@@ -202,6 +204,9 @@ export default {
   left: 15%;
   padding: 5px 4px;
   font-size: 14px;
+}
+#product_details {
+  flex-direction: column;
 }
 }
 </style>

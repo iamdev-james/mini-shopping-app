@@ -29,6 +29,8 @@ export default {
     width: 100vw;
     height: auto;
     z-index: 5;
+    background: white;
+    box-shadow: 1px 1px 2px black;
   }
   #nav-bar {
     display: flex;

@@ -1,6 +1,5 @@
 <template>
   <div>
-  <Header />
     <table id= 'itemTable'>
       <tr id= 'table_header'>
         <th> Product </th>
@@ -9,6 +8,7 @@
         <th> Price </th>
         <th> Remove </th>
       </tr>
+      <h3 v-if= '!cart.length'> You haven't added anything to your cart yet </h3>
       <tr v-for = '(cart, index) in cart' :key= 'index'>
         <img :src= 'cart.imgUrl' id = 'itemImg' />
         <td v-text="cart.itemname"></td>
@@ -20,21 +20,17 @@
     <hr />
      <h2 id= 'total'> TOTAL: N {{ total.toFixed(2) }}</h2>
   </div>
-  <div id= 'payoutSec'>
+  <div v-if = 'cart.length' id= 'payoutSec'>
     <p class= 'textDanger'>*Please use the following test credit card for payment*</p>
     <p class= 'textDanger'>4242 4242 4242 4242- Exp: 01/20- CW: 123</p>
     <button id= 'payNow'>Pay Now</button>
   </div>
 </template>
 <script>
-import Header from '@/components/header.vue'
 export default {
   props: {
     cart: Array,
     total: Number
-  },
-  components: {
-    Header
   },
   data () {
     return {
@@ -104,5 +100,27 @@ export default {
   border-radius: 10px;
   margin-right: -15rem;
   margin-top: 30px;
+ }
+ #payNow:hover {
+  background: white;
+  color: blue;
+ }
+ h3 {
+  padding: 10px;
+ }
+ @media screen and (max-width: 700px) {
+  #itemTable {
+   width: 100vw !important;
+   transform: scale(0.6);
+   margin-left: -130px;
+  }
+  #itemImg {
+   width: 40px;
+   height: 40px;
+  }
+  #count {
+   width: 35px;
+   height: 20px;
+  }
  }
 </style>
